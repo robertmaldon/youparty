@@ -4,6 +4,8 @@ A web-based minimalist, distraction-free YouTube video player
 
 ## Description
 
+[Demo](http://htmlpreview.github.io/?https://github.com/robertmaldon/youparty/blob/master/index.html)
+
 youparty is minimalist video player written in html/css/javascript. It uses the [YouTube javascript api](https://developers.google.com/youtube/js_api_reference) to load and play videos from YouTube. Videos are selected from curated play lists.
 
 ## Installation
@@ -54,3 +56,4 @@ MIT. See `LICENSE`
 * [yt_videos](http://www.sitepoint.com/youtube-rails/) presents recently uploaded YouTube videos pinterest-style. Uses the YouTube iframe api.
 * [Youtube mixer](https://github.com/kristopolous/ytmix) grabs recently uploaded YouTube play lists and plays the songs while hiding the videos
 * [The Nostalgia Machine](http://thenostalgiamachine.com/) is a curated collection of YouTube videos for songs from the Billboard Year-End Hot 100 singles charts.
+* [YouTube Disco](https://www.youtube.com/disco) playlists for featured artists.
