@@ -1,0 +1,92 @@
+body {
+	background: #000;
+	color: #f0ffff;
+}
+
+/* neon text effect */
+.neon {
+	text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+}
+
+.selected {
+	background-color: gray;
+}
+
+.hovering {
+	color: orange;
+}
+
+#controls-container {
+    position: absolute;
+    top: 32px;
+    left: 0;
+    width: 32px;
+}
+
+#pause, #play, #replay, #previous, #next, #mute, #unmute, #volume-up, #volume-down {
+	display: none;
+}
+
+#player-container {
+    margin: 0 0 0 50px;
+}
+
+.song-info {
+	text-align: center;
+	width: 100%;
+	float: left;
+}
+
+#title {
+	font-size: 18px;
+}
+
+#artist {
+	padding-left: 30px;
+	font-size: 12px;
+}
+
+#playlists-container {
+	display: none;
+	cursor: default;
+	width: 220px;
+	float: left;
+	margin-top: 32px;
+}
+
+#hide-playlists {
+	position: absolute;
+	top: 32px;
+	left: 220px;
+	z-index: 100;
+}
+
+#playlist-container {
+	width: 100px;
+	overflow: auto;
+	float: left;
+}
+
+#playlist-container ol li {
+	border: 2px solid grey;
+	margin: 0 0 2px 0;
+}
+
+#playlist-container ol li.playing {
+	border: 2px solid orange;
+}
+
+#videolist-container {
+	width: 120px;
+	overflow: auto;
+	float: left;
+}
+
+#videolist-container ol li {
+	border: 2px solid grey;
+	margin: 0 0 2px 0;
+}
+
+#videolist-container ol li.playing {
+	border: 2px solid orange;
+}

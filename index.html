@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+    <title>YouParty!</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+	  <script src="js/jquery-2.1.0.min.js"></script>
+  </head>
+  <body>
+
+    <div id="controls-container">
+      <img id="show-playlists" alt="Show playlists" title="Show playlists" src="images/playlists-open.png"/>
+      <img id="pause" alt="Pause" title="Pause" src="images/pause.png"/>
+      <img id="play" alt="Play" title="Play" src="images/play.png"/>
+      <img id="replay" alt="Replay" title="Replay" src="images/replay.png"/>
+      <img id="previous" alt="Previous" title="Previous" src="images/previous.png"/>
+      <img id="next" alt="Next" title="Next" src="images/next.png"/>
+      <img id="mute" alt="Mute" title="Mute" src="images/mute.png"/>
+      <img id="unmute" alt="Unmute" title="Unmute" src="images/unmute.png"/>
+      <img id="volume-up" alt="Volume Up" title="Volume Up" src="images/volume-up.png"/>
+      <img id="volume-down" alt="Volume Down" title="Volume Down" src="images/volume-down.png"/>
+    </div>
+
+    <div id="playlists-container">
+      <img id="hide-playlists" alt="Hide playlists" title="Hide playlists" src="images/playlists-close.png"/>
+
+      <div id="playlist-container">
+        <ol id="playlist">
+        </ol>
+      </div>
+      <div id="videolist-container">
+        <ol id="videolist">
+        </ol>
+      </div>
+    </div>
+
+  	<div id="player-container">
+  		<div id="player-placeholder">You need Flash player 9+ and JavaScript enabled to view this video.</div>
+      <div class="song-info">
+          <span id="title" class="neon">YouParty!</span>
+          <span id="artist" class="neon"</span>
+      </div>
+      <div id="control"></div>
+  	</div>
+
+    <script src="playlists.js" type="text/javascript"></script>
+
+    <script src="//www.google.com/jsapi"></script>
+    <script type="text/javascript">
+        google.load("swfobject", "2.1");
+    </script>
+    <script src="https://www.youtube.com/player_api" type="text/javascript"></script>
+    <script src="js/player.js" type="text/javascript"></script>
+  </body>
+</html>
