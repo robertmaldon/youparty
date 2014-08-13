@@ -161,6 +161,8 @@ function onYouTubePlayerReady(playerId) {
   	getPlayer().addEventListener("onStateChange", "onYouTubePlayerEvent");
 
     if (!playerReady) {
+        $("#player-overlay").click(playerClick);
+
   	    $("#show-playlists").click(showPlaylists);
         $("#hide-playlists").click(hidePlaylists);
 
@@ -211,6 +213,14 @@ function volumeChange() {
     var volume = parseInt($("#volume-slider").val());
     getPlayer().setVolume(volume);
     $("#volume-label").html(volume + "%");
+}
+
+function playerClick() {
+    if ($("#pause").is(':visible')) {
+        pauseVideo();
+    } else {
+        playVideo();
+    }
 }
 
 function onYouTubePlayerEvent(event) {
