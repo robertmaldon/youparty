@@ -3,8 +3,10 @@
   <head>
     <title>YouParty!</title>
     <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/jquery.nouislider-6.2.0.css"/>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
 	  <script src="js/jquery-2.1.0.min.js"></script>
+    <script src="js/jquery.nouislider-6.2.0.min.js"></script>
   </head>
   <body>
 
@@ -17,8 +19,10 @@
       <img id="next" alt="Next" title="Next" src="images/next.png"/>
       <img id="mute" alt="Mute" title="Mute" src="images/mute.png"/>
       <img id="unmute" alt="Unmute" title="Unmute" src="images/unmute.png"/>
-      <img id="volume-up" alt="Volume Up" title="Volume Up" src="images/volume-up.png"/>
-      <img id="volume-down" alt="Volume Down" title="Volume Down" src="images/volume-down.png"/>
+      <div id="volume">
+        <div id="volume-slider"></div>
+        <span id="volume-label"></span>
+      </div>
     </div>
 
     <div id="playlists-container">

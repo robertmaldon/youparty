@@ -49,7 +49,11 @@ where "title" is the name of the song, "artist" is the singer/band and "vid" is 
 
 ## License
 
-MIT. See `LICENSE`
+[MIT license](LICENSE)
+
+## Credits
+
+* [noUiSlider](https://github.com/leongersen/noUiSlider/) - a lightweight jQuery range slider plugin
 
 ## Similar projects
 

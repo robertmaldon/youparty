@@ -23,7 +23,7 @@ body {
     width: 32px;
 }
 
-#pause, #play, #replay, #previous, #next, #mute, #unmute, #volume-up, #volume-down {
+#pause, #play, #replay, #previous, #next, #mute, #unmute, #volume {
 	display: none;
 }
 
@@ -89,4 +89,49 @@ body {
 
 #videolist-container ol li.playing {
 	border: 2px solid orange;
+}
+
+#volume {
+	width: 32px;
+	color: #444444;
+}
+
+#volume-slider {
+	margin: 20px 10px 20px 10px;
+	padding: 0;
+	width: 10px;
+	height: 200px;
+	color: #444444;
+}
+
+.noUi-background {
+	background: #000;
+	box-shadow: inset 0 1px 1px #999999;
+}
+
+.noUi-target {
+    border: none;
+}
+
+.noUi-vertical .noUi-handle {
+	width: 22px;
+}
+
+.noUi-handle {
+	border: none;
+	background: #444444;
+	box-shadow: inset 0 0 1px #444444,
+				inset 0 1px 7px #666666;
+}
+
+.noUi-handle::before, #volume-slider .noUi-handle::after {
+	content: none;
+}
+
+.noUi-connect {
+	background: #444444;
+}
+
+#volume-label {
+	margin: 0 0 0 5px;
 }

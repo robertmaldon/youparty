@@ -34,7 +34,20 @@ function initPlayer() {
     // This sets the ID of the DOM object or embed tag to 'player'.
     // You can use this ID to access the swf and call the player's API
     var atts = { id: "player" }; // 640 x 360
-    swfobject.embedSWF(swfUrl, "player-placeholder", playerSize[0], playerSize[1], "9", null, flashvars, params, atts);   	
+    swfobject.embedSWF(swfUrl, "player-placeholder", playerSize[0], playerSize[1], "9", null, flashvars, params, atts);
+
+    // Init the volume slider
+    $("#volume-slider").noUiSlider({
+        start: 50,
+        step: 1,
+        orientation: "vertical",
+        direction: "rtl",
+        connect: "lower",
+        range: {
+          'min': [   0 ],
+          'max': [ 100 ]
+        }
+    });
 }
 
 function showPlaylists() {
@@ -160,6 +173,7 @@ function onYouTubePlayerReady(playerId) {
         $("#next").click(nextVideo);
         $("#mute").click(mute);
         $("#unmute").click(unmute);
+        $("#volume-slider").on("slide", volumeChange);
 
         playerReady = true;
     }
@@ -185,12 +199,20 @@ function mute() {
     getPlayer().mute();
     $("#mute").hide();
     $("#unmute").show();
+    $("#volume").hide();
 }
 
 function unmute() {
     getPlayer().unMute();
     $("#unmute").hide();
     $("#mute").show();
+    $("#volume").show();
+}
+
+function volumeChange() {
+    var volume = parseInt($("#volume-slider").val());
+    getPlayer().setVolume(volume);
+    $("#volume-label").html(volume + "%");
 }
 
 function onYouTubePlayerEvent(event) {
@@ -228,12 +250,18 @@ function manageControls(event) {
         $("#next").show();
         $("#previous").show();
 
-        if (getPlayer().isMuted()) {
+        var player = getPlayer();
+        if (player.isMuted()) {
             $("#mute").hide();
             $("#unmute").show();
+            $("#volume").hide();
         } else {
             $("#mute").show();
             $("#unmute").hide();
+            volume = player.getVolume();
+            $("#volume-slider").val(volume);
+            $("#volume-label").html(volume + "%");
+            $("#volume").show();
         }
     } else if (event == YT.PlayerState.PAUSED) {
         $("#play").show();
@@ -257,6 +285,7 @@ function manageControls(event) {
         $("#previous").hide();
         $("#mute").hide();
         $("#unmute").hide();
+        $("#volume").hide();
     }
 }
 
