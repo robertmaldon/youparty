@@ -18,7 +18,7 @@ body {
 
 #controls-container {
     position: absolute;
-    top: 32px;
+    top: 0;
     left: 0;
     width: 32px;
 }
@@ -49,15 +49,17 @@ body {
 #playlists-container {
 	display: none;
 	cursor: default;
-	width: 220px;
-	float: left;
-	margin-top: 32px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 320px;
+	z-index: 100;
 }
 
 #hide-playlists {
 	position: absolute;
-	top: 32px;
-	left: 220px;
+	top: 0;
+	left: 320px;
 	z-index: 100;
 }
 
@@ -68,6 +70,7 @@ body {
 }
 
 #playlist-container ol li {
+	background: #000;
 	border: 2px solid grey;
 	margin: 0 0 2px 0;
 }
@@ -77,12 +80,13 @@ body {
 }
 
 #videolist-container {
-	width: 120px;
+	width: 220px;
 	overflow: auto;
 	float: left;
 }
 
 #videolist-container ol li {
+	background: #000;
 	border: 2px solid grey;
 	margin: 0 0 2px 0;
 }

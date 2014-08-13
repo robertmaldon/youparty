@@ -67,9 +67,8 @@ function showPlaylists() {
 
     showVideolist(currentPlaylistIndex);
 
+    resizePlaylists();
     $("#playlists-container").show();
-
-    resizePlayer(); 
 }
 
 function showVideolist(playlistIndex) {
@@ -99,7 +98,6 @@ function showVideolist(playlistIndex) {
 function hidePlaylists() {
     if ($("#playlists-container").is(':visible')) {
         $("#playlists-container").hide(150, function() {
-                resizePlayer();
                 $("#controls-container").show();
             }
         );
@@ -258,7 +256,7 @@ function manageControls(event) {
         } else {
             $("#mute").show();
             $("#unmute").hide();
-            volume = player.getVolume();
+            var volume = player.getVolume();
             $("#volume-slider").val(volume);
             $("#volume-label").html(volume + "%");
             $("#volume").show();
@@ -293,13 +291,15 @@ function resizePlayer() {
     var player = $("#player");
     if (player.size() > 0) {
         var playerSize = calculatePlayerSize();
-        player.animate({width: playerSize[0], height: playerSize[1]}, 150);
+        player.animate({width: playerSize[0], height: playerSize[1]}, 150, "swing", resizePlaylists);
     }
+}
 
-    if ($("#playlists-container").is(':visible')) {
-        $("#playlist-container").css({height: $(window).height() - 50});
-        $("#videolist-container").css({height: $(window).height() - 50});
-    }
+function resizePlaylists() {
+    var height = $("#player-container").height();
+    $("#playlists-container").css("height", height);
+    $("#playlist-container").css("height", height);
+    $("#videolist-container").css("height", height);
 }
 
 $(window).on("resize", function() {
