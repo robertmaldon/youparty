@@ -161,6 +161,8 @@ function onYouTubePlayerReady(playerId) {
   	getPlayer().addEventListener("onStateChange", "onYouTubePlayerEvent");
 
     if (!playerReady) {
+        $(document).mousemove(showCursor);
+
         $("#player-overlay").click(playerClick);
 
   	    $("#show-playlists").click(showPlaylists);
@@ -179,6 +181,23 @@ function onYouTubePlayerReady(playerId) {
     }
 
     loadVideo(0, 0);
+}
+
+var cursorHidden = false;
+var hideCursorTimer;
+
+function hideCursor() {
+    $("html").css({cursor: "url(images/transparent.png), default"});
+    cursorHidden = true;
+}
+
+function showCursor() {
+    clearTimeout(hideCursorTimer);
+    if (cursorHidden) {
+        $("html").css({cursor: "default"});
+        cursorHidden = false;
+    }
+    hideCursorTimer = setTimeout('hideCursor()', 5000);
 }
 
 function pauseVideo() {
@@ -216,7 +235,7 @@ function volumeChange() {
 }
 
 function playerClick() {
-    if ($("#pause").is(':visible')) {
+    if ($("#pause").is(":visible")) {
         pauseVideo();
     } else {
         playVideo();
