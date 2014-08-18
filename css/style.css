@@ -40,6 +40,34 @@ body {
 	height: 100%;
 }
 
+#progress-slider-container {
+	display: none;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+    width: 100%;
+}
+
+#progress-slider {
+	height: 10px;
+	width: 95%;
+	float: left;
+}
+
+#progress-time {
+	height: 10px;
+	float: left;
+}
+
+.noUi-horizontal .noUi-handle {
+	width: 16px;
+	height: 16px;
+}
+
+.noUi-handle::before, #progress-slider .noUi-handle::after {
+	content: none;
+}
+
 .song-info {
 	text-align: center;
 	width: 100%;
@@ -121,7 +149,7 @@ body {
 
 .noUi-background {
 	background: #000;
-	box-shadow: inset 0 1px 1px #999999;
+	box-shadow: inset 0 0 1px #999999;
 }
 
 .noUi-target {

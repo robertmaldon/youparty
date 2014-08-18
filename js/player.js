@@ -1,9 +1,19 @@
 var currentPlaylistIndex = -1;
+var currentVidUrl;
 
 var playerReady = false;
 
+// Hide cursor after a period of inactivity
+var cursorHidden = false;
+var hideCursorTimer;
+
+var progressTimer;
+
 var PLAYLIST_DATA_NAME_INDEX  = 0;
 var PLAYLIST_DATA_SONGS_INDEX = 1;
+
+var WIDTH = 0;
+var HEIGHT = 1;
 
 function getPlayer() {
     return document.getElementById("player");
@@ -34,7 +44,7 @@ function initPlayer() {
     // This sets the ID of the DOM object or embed tag to 'player'.
     // You can use this ID to access the swf and call the player's API
     var atts = { id: "player" }; // 640 x 360
-    swfobject.embedSWF(swfUrl, "player-placeholder", playerSize[0], playerSize[1], "9", null, flashvars, params, atts);
+    swfobject.embedSWF(swfUrl, "player-placeholder", playerSize[WIDTH], playerSize[HEIGHT], "9", null, flashvars, params, atts);
 
     // Init the volume slider
     $("#volume-slider").noUiSlider({
@@ -183,12 +193,11 @@ function onYouTubePlayerReady(playerId) {
     loadVideo(0, 0);
 }
 
-var cursorHidden = false;
-var hideCursorTimer;
-
 function hideCursor() {
     $("html").css({cursor: "url(images/transparent.png), default"});
     cursorHidden = true;
+    hideCursorTimer = undefined;
+    hideProgress();
 }
 
 function showCursor() {
@@ -198,6 +207,7 @@ function showCursor() {
         cursorHidden = false;
     }
     hideCursorTimer = setTimeout('hideCursor()', 5000);
+    showProgress();
 }
 
 function pauseVideo() {
@@ -242,6 +252,66 @@ function playerClick() {
     }
 }
 
+function showProgress() {
+    $("#progress-slider-container").show();
+}
+
+function hideProgress() {
+    $("#progress-slider-container").hide();
+}
+
+function formatProgressTime(time) {
+    var minutes = Math.floor(time / 60);
+    var seconds = time - minutes * 60;
+
+    var formattedTime = "";
+    if (minutes > 0) {
+        formattedTime = minutes + ":";
+        if (seconds < 10) {
+            formattedTime = formattedTime + "0";
+        }
+    }
+
+    formattedTime = formattedTime + seconds; 
+
+    return formattedTime;
+}
+
+function updateProgress() {
+    var player = getPlayer();
+    var duration = parseInt(player.getDuration());
+    var currentTime = parseInt(player.getCurrentTime());
+
+    $("#progress-slider").val(currentTime);
+    $("#progress-time").html(formatProgressTime(currentTime) + " / " + formatProgressTime(duration));
+}
+
+function changeProgress() {
+    var progress = parseInt($("#progress-slider").val());
+    getPlayer().seekTo(progress, true);    
+}
+
+function startProgress() {
+    $("#progress-slider-container").append("<div id=\"progress-slider\"></div><span id=\"progress-time\"></span>");
+    $("#progress-slider").noUiSlider({
+            start: 0,
+            step: 1,
+            connect: "lower",
+            range: {
+              "min": [   0 ],
+              "max": [ player.getDuration() ]
+            }
+    });
+    $("#progress-slider").on("slide", changeProgress);
+    progressTimer = setInterval(updateProgress, 1000);
+}
+
+function stopProgress() {
+    clearTimeout(progressTimer);
+    $("#progress-slider-container").empty();
+    progressTimer = undefined;
+}
+
 function onYouTubePlayerEvent(event) {
     console.log("player event [" + event + "]");
 
@@ -253,7 +323,7 @@ function onYouTubePlayerEvent(event) {
         $("#title").html(videoData["title"]);
         $("#artist").html(videoData["artist"]);
 
-        if ($("#playlists-container").is(':visible')) {
+        if ($("#playlists-container").is(":visible")) {
             $("#playlist li").removeClass("playing");
             $("#playlist li:nth-child(" + (currentPlaylistIndex + 1) + ")").addClass("playing");
             if ($("#playlist li:nth-child(" + (currentPlaylistIndex + 1) + ")").hasClass("selected")) {
@@ -262,7 +332,15 @@ function onYouTubePlayerEvent(event) {
                 $("#videolist li:nth-child(" + (currentVideoIndex + 1) + ")").addClass("playing");
             }
         }
+
+        var vidUrl = player.getVideoUrl();
+        if (vidUrl != currentVidUrl) {
+            stopProgress();
+            startProgress(vidUrl);
+            currentVidUrl = vidUrl; 
+        }    
     } else if (event == YT.PlayerState.ENDED) { // end of a playlist
+        stopProgress();
         nextVideo();
     }
 
@@ -320,7 +398,7 @@ function resizePlayer() {
     var player = $("#player");
     if (player.size() > 0) {
         var playerSize = calculatePlayerSize();
-        player.animate({width: playerSize[0], height: playerSize[1]}, 150, "swing", resizePlaylists);
+        player.animate({width: playerSize[WIDTH], height: playerSize[HEIGHT]}, 150, "swing", resizePlaylists);
     }
 }
 
