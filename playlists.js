@@ -351,7 +351,9 @@ var playlistOneHitWonders = [ "One Hit Wonders", [
     {
       "title": "Kung Fu Fighting (1974)",
       "artist": "Carl Douglas",
-      "vid": "dc3aHYGhNVM"
+      "vid": "dc3aHYGhNVM",
+      "start": 138,
+      "end": 435
     },
     {
       "title": "Rock And Roll (Part 1) (1972)",
@@ -413,6 +415,18 @@ var playlistOneHitWonders = [ "One Hit Wonders", [
 
 var playlistSmooth = [ "Smooth", [
     {
+      "title": "Keep On Movin' (1999)",
+      "artist": "5ive",
+      "vid": "eZYefKf1t-w",
+      "start": 28,
+      "end": 150
+    },
+    {
+      "title": "Moonlight Shadow (1983)",
+      "artist": "Mike Oldfield ft. Maggie Reilly",
+      "vid": "e80qhyovOnA"
+    },
+    {
       "title": "Love Is In The Air (1978)",
       "artist": "John Paul Young",
       "vid": "wPMa5yc4Nk0"
@@ -423,14 +437,9 @@ var playlistSmooth = [ "Smooth", [
       "vid": "LJK8OTDG6g8"
     },
     {
-      "title": "Moonlight Shadow (1983)",
-      "artist": "Mike Oldfield ft. Maggie Reilly",
-      "vid": "e80qhyovOnA"
-    },
-    {
       "title": "Drift Away (1973)",
       "artist": "Dobie Gray",
-      "vid": "GWAwRWwOSWM"
+      "vid": "NIuyDWzctgY"
     },
     {
       "title": "Sometimes When We Touch (1994)",
@@ -528,9 +537,14 @@ var playlistSmooth = [ "Smooth", [
       "vid": "5QYxuGQMCuU"
     },
     {
+      "title": "Whole Again (2001)",
+      "artist": "Atomic Kitten",
+      "vid": "1V0xQkk9kbc"
+    },
+    {
       "title": "Up Where We Belong (1982)",
       "artist": "Joe Cocker and Jennifer Warnes",
-      "vid": "bjrOcrisGyI"
+      "vid": "kHvDoQl4OGA"
     },
     {
       "title": "Luca (1987)",
@@ -1344,7 +1358,7 @@ var playlist80s = [ "80s", [
       "vid": "siwpn14IE7E"
     },
     {
-      "title": "Uptoen Girl (1983)",
+      "title": "Uptown Girl (1983)",
       "artist": "Billy Joel",
       "vid": "hCuMWrfXG4E"
     },
@@ -1377,6 +1391,11 @@ var playlist80s = [ "80s", [
       "title": "Never Gonna Give You Up (1987)",
       "artist": "Rick Astley",
       "vid": "dQw4w9WgXcQ"
+    },
+    {
+      "title": "La Luna (1989)",
+      "artist": "Belinda Carlisle",
+      "vid": "1RergWOAFoc"
     },
     {
       "title": "Glory of Love (1986)",
@@ -1414,14 +1433,14 @@ var playlist80s = [ "80s", [
       "vid": "yCC_b5WHLX0"
     },
     {
-      "title": "Dangerous (1989)",
-      "artist": "Roxette",
-      "vid": "VFNRh26TPmM"
-    },
-    {
       "title": "I Get Weak (1988)",
       "artist": "Belinda Carlisle",
       "vid": "Uzd_hnE344E"
+    },
+    {
+      "title": "It's A Sin (1987)",
+      "artist": "Pet Shop Boys",
+      "vid": "KDXUPBYPsl4"
     },
     {
       "title": "California Blue (1989)",
@@ -1434,9 +1453,9 @@ var playlist80s = [ "80s", [
       "vid": "ZiEqCJf24TY"
     },
     {
-      "title": "La Luna (1989)",
-      "artist": "Belinda Carlisle",
-      "vid": "1RergWOAFoc"
+      "title": "Dangerous (1989)",
+      "artist": "Roxette",
+      "vid": "VFNRh26TPmM"
     },
     {
       "title": "You Got It (1989)",
@@ -1449,14 +1468,29 @@ var playlist80s = [ "80s", [
       "vid": "9C2RCjiS3tg"
     },
     {
-      "title": "Heaven Is A Place On Earth (1987)",
-      "artist": "Belinda Carlisle",
-      "vid": "OZS0bNtoizY"
-    },
-    {
       "title": "Little Lies (1987)",
       "artist": "Fleetwood Mac",
       "vid": "Qf63D4EQtV8"
+    },
+    {
+      "title": "Love in the First Degree (1987)",
+      "artist": "Bananarama",
+      "vid": "Iiy5HO4VKEA"
+    },
+    {
+      "title": "What Have I Done To Deserve This? (1987)",
+      "artist": "Pet Shop Boys",
+      "vid": "Wn9E5i7l-Eg"
+    },
+    {
+      "title": "Broken Wings (1985)",
+      "artist": "Mr Mister",
+      "vid": "nKhN1t_7PEY"
+    },
+    {
+      "title": "Heaven Is A Place On Earth (1987)",
+      "artist": "Belinda Carlisle",
+      "vid": "OZS0bNtoizY"
     },
     {
       "title": "Kokomo (1988)",
@@ -1777,7 +1811,8 @@ var playlistMetalCovers =  [ "Metal Covers", [
     {
       "title": "Ghostbusters",
       "artist": "Vomitron",
-      "vid": "PmYGfn5Iq9s"
+      "vid": "PmYGfn5Iq9s",
+      "start": 4
     },
     {
       "title": "Never Ending Story",
@@ -1804,24 +1839,24 @@ var playlistFrozen =  [ "Frozen", [
       "vid": "moSFlvxnbgk"
     },
     {
+      "title": "Frozen Support Group",
+      "artist": "Jono and Ben at Ten",
+      "vid": "07f6U0SY3F8"
+    },
+    {
       "title": "The Fox",
       "artist": "NostalgicFangirl",
       "vid": "qM7U5dqQRxo"
     },
     {
       "title": "Let It Go",
-      "artist": "Alex Boyé (Africanized Tribal Cover) Ft. One Voice Children's Choir",
+      "artist": "Alex Boye (Africanized Tribal Cover) Ft. One Voice Children's Choir",
       "vid": "DAJYk1jOhzk"
     },
     {
       "title": "Let It Go",
       "artist": "Multi-language 'Behind The Mic'",
       "vid": "BS0T8Cd4UhA"
-    },
-    {
-      "title": "Luna's Let It Go",
-      "artist": "Королева Кризалис",
-      "vid": "Q2T72eqt5wE"
     },
     {
       "title": "Get It Out of My Head (Let It Go)",
