@@ -58,7 +58,10 @@ where:
 
 ## Credits
 
+As usual I stand on the shoulders of giants. youparty makes use of the following libraries:
+
 * [noUiSlider](https://github.com/leongersen/noUiSlider/) - a lightweight jQuery range slider plugin
+* [jsUri](https://github.com/derek-watson/jsUri) - Uri parsing and manipulation
 
 ## Similar projects
 

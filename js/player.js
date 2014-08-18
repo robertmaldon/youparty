@@ -172,6 +172,12 @@ function loadVideo(playlistIndex, videolistIndex) {
 
     currentPlaylistIndex  = playlistIndex;
     currentVideolistIndex = videolistIndex;
+
+    var uri = new Uri(window.location.href);
+    uri.replaceQueryParam("pl", currentPlaylistIndex.toString());
+    uri.replaceQueryParam("vl", currentVideolistIndex.toString());
+
+    history.replaceState(null, null, uri.toString());
 }
 
 function onYouTubePlayerReady(playerId) {
@@ -199,7 +205,11 @@ function onYouTubePlayerReady(playerId) {
         playerReady = true;
     }
 
-    loadVideo(0, 0);
+    var uri = new Uri(window.location.href);
+    var playlistIndex = uri.getQueryParamValue("pl") || 0;
+    var videolistIndex = uri.getQueryParamValue("vl") || 0;
+
+    loadVideo(parseInt(playlistIndex), parseInt(videolistIndex));
 }
 
 function hideCursor() {
@@ -228,7 +238,6 @@ function playVideo() {
 }
 
 function toggleReplayVideo() {
-
     if (replayVideo) {
         $("#replay").attr("src", "images/replay.png");
         replayVideo = false;
