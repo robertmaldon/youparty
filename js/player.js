@@ -3,6 +3,8 @@ var currentVideolistIndex = -1;
 
 var playerReady = false;
 
+var replayVideo = false;
+
 var playerUnstartedTimer;
 
 // Hide cursor after a period of inactivity
@@ -187,7 +189,7 @@ function onYouTubePlayerReady(playerId) {
 
         $("#pause").click(pauseVideo);
         $("#play").click(playVideo);
-        $("#replay").click(replayVideo);
+        $("#replay").click(toggleReplayVideo);
         $("#previous").click(previousVideo);
         $("#next").click(nextVideo);
         $("#mute").click(mute);
@@ -203,7 +205,7 @@ function onYouTubePlayerReady(playerId) {
 function hideCursor() {
     $("html").css({cursor: "url(images/transparent.png), default"});
     cursorHidden = true;
-    hideCursorTimer = undefined;
+    hideCursorTimer = null;
     hideProgress();
 }
 
@@ -225,10 +227,15 @@ function playVideo() {
     getPlayer().playVideo();
 }
 
-function replayVideo() {
-    var player = getPlayer();
-    player.seekTo(0, true);
-    player.playVideo(); // Resume playing a video if it has been paused. If video is already playing then doing this has no effect.
+function toggleReplayVideo() {
+
+    if (replayVideo) {
+        $("#replay").attr("src", "images/replay.png");
+        replayVideo = false;
+    } else {
+        $("#replay").attr("src", "images/replay-active.png");
+        replayVideo = true;
+    }
 }
 
 function mute() {
@@ -316,12 +323,12 @@ function startProgress() {
 function stopProgress() {
     clearTimeout(progressTimer);
     $("#progress-slider-container").empty();
-    progressTimer = undefined;
+    progressTimer = null;
 }
 
 function stopUnstarted() {
     clearTimeout(playerUnstartedTimer);
-    playerUnstartedTimer = undefined;
+    playerUnstartedTimer = null;
 }
 
 // Called when a video has not started after a given time
@@ -336,8 +343,6 @@ function onYouTubePlayerEvent(event) {
     if (event == YT.PlayerState.PLAYING) {
         stopUnstarted();
 
-        var player = getPlayer();
-
         var videoData = getVideolist(currentPlaylistIndex)[currentVideolistIndex];
         $("#title").html(videoData["title"]);
         $("#artist").html(videoData["artist"]);
@@ -351,7 +356,7 @@ function onYouTubePlayerEvent(event) {
             }
         }
 
-        var vidUrl = player.getVideoUrl();
+        var vidUrl = getPlayer().getVideoUrl();
         if (vidUrl != currentVidUrl) {
             stopProgress();
             startProgress(vidUrl);
@@ -359,7 +364,12 @@ function onYouTubePlayerEvent(event) {
         }    
     } else if (event == YT.PlayerState.ENDED) { // end of a playlist
         stopProgress();
-        nextVideo();
+        if (replayVideo) {
+            currentVidUrl = null;
+            loadVideo(currentPlaylistIndex, currentVideolistIndex);
+        } else {
+            nextVideo();
+        }
     } else if (event == -1) {
         stopUnstarted();
         stopProgress();
