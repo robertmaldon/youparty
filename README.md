@@ -37,10 +37,15 @@ Each playlist is an array of song data tuples like the following:
     {
       "title": "Happiness (2010)",
       "artist": "Alexis Jordan",
-      "vid": "26jKtELitQE"
+      "vid": "26jKtELitQE",
+      "start": 65
     },
 
-where "title" is the name of the song, "artist" is the singer/band and "vid" is the [YouTube video id](https://productforums.google.com/forum/#!topic/youtube/wv_aUD-QIvs).
+where:
+* "title" is the name of the song
+* "artist" is the singer/band
+* "vid" is the [YouTube video id](https://productforums.google.com/forum/#!topic/youtube/wv_aUD-QIvs).
+* (Optional) "start" is the number of seconds into the video to start playing
 
 ## TODO
 

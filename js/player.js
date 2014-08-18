@@ -1,13 +1,16 @@
 var currentPlaylistIndex = -1;
-var currentVidUrl;
+var currentVideolistIndex = -1;
 
 var playerReady = false;
+
+var playerUnstartedTimer;
 
 // Hide cursor after a period of inactivity
 var cursorHidden = false;
 var hideCursorTimer;
 
 var progressTimer;
+var currentVidUrl;
 
 var PLAYLIST_DATA_NAME_INDEX  = 0;
 var PLAYLIST_DATA_SONGS_INDEX = 1;
@@ -60,6 +63,10 @@ function initPlayer() {
     });
 }
 
+function getVideolist(playlistIndex) {
+    return allPlaylists[playlistIndex][PLAYLIST_DATA_SONGS_INDEX];
+}
+
 function showPlaylists() {
     $("#controls-container").hide();
 
@@ -87,7 +94,7 @@ function showVideolist(playlistIndex) {
 
     $("#videolist").empty();
 
-    var videolist = allPlaylists[playlistIndex][PLAYLIST_DATA_SONGS_INDEX];
+    var videolist = getVideolist(playlistIndex);
     for (var j = 0; j < videolist.length; j++) {
         $("#videolist").append("<li onclick=\"loadVideo(" + playlistIndex + ", " + j + ")\">" + videolist[j]["title"] + "<br/>" + videolist[j]["artist"] + "</li>");
     }
@@ -99,9 +106,7 @@ function showVideolist(playlistIndex) {
     });
 
     if (playlistIndex == currentPlaylistIndex) {
-        var player = document.getElementById("player");
-        var currentVideoIndex = player.getPlaylistIndex();
-        $("#videolist li:nth-child(" + (currentVideoIndex + 1) + ")").addClass("playing");
+        $("#videolist li:nth-child(" + (currentVideolistIndex + 1) + ")").addClass("playing");
     }
 }
 
@@ -115,54 +120,56 @@ function hidePlaylists() {
 }
 
 function previousVideo() {
-    var player = getPlayer();
+    var previousPlaylistIndex = currentPlaylistIndex;
+    var previousVideolistIndex = currentVideolistIndex;
 
-    var currentPlaylist = player.getPlaylist();
-    var currentVideo    = player.getPlaylistIndex();
+    previousVideolistIndex = previousVideolistIndex - 1;
 
-    if (currentVideo == 0) {
-        var previousPlaylist = currentPlaylistIndex - 1;
-        if (previousPlaylist < 0) {
-            previousPlaylist = allPlaylists.length - 1;
+    if (previousVideolistIndex < 0) {
+        previousPlaylistIndex = previousPlaylistIndex - 1;
+        if (previousPlaylistIndex < 0) {
+            previousPlaylistIndex = allPlaylists.length - 1;
         }
-        loadVideo(previousPlaylist, allPlaylists[previousPlaylist][PLAYLIST_DATA_SONGS_INDEX].length - 1);
-    } else {
-        player.previousVideo();
+
+        previousVideolistIndex = getVideolist(previousPlaylistIndex).length - 1;
     }
+
+    loadVideo(previousPlaylistIndex, previousVideolistIndex);    
 }
 
 function nextVideo() {
-    var player = getPlayer();
+    var nextPlaylistIndex = currentPlaylistIndex;
+    var nextVideolistIndex = currentVideolistIndex;
 
-    var currentPlaylist = player.getPlaylist();
-    var currentVideo    = player.getPlaylistIndex();
+    nextVideolistIndex = nextVideolistIndex + 1
 
-    if (currentVideo == currentPlaylist.length - 1) {
-        var nextPlaylist = currentPlaylistIndex + 1;
-        if (nextPlaylist >= allPlaylists.length) {
-            nextPlaylist = 0;
+    if (nextVideolistIndex >= getVideolist(nextPlaylistIndex).length) {
+        nextVideolistIndex = 0;
+
+        nextPlaylistIndex = nextPlaylistIndex + 1;
+        if (nextPlaylistIndex >= allPlaylists.length) {
+            nextPlaylistIndex = 0;
         }
-        loadVideo(nextPlaylist, 0);
-    } else {
-        player.nextVideo();
     }
+
+    loadVideo(nextPlaylistIndex, nextVideolistIndex);
 }
 
-function loadVideo(playlistIndex, videoIndex) {
+function loadVideo(playlistIndex, videolistIndex) {
     hidePlaylists();
 
-	var playlistVids = [];
+    var videoData = getVideolist(playlistIndex)[videolistIndex];
+    var start = videoData["start"] || 0;
+    var end = videoData["end"];
 
-    var playlistMetaData = allPlaylists[playlistIndex];
-
-    var playlistData = playlistMetaData[PLAYLIST_DATA_SONGS_INDEX];
-    for (var i = 0; i < playlistData.length; i++) {
-        playlistVids.push(playlistData[i]["vid"]);
+    if (end == null) {
+        getPlayer().loadVideoById(videoData["vid"], start);
+    } else {
+        getPlayer().loadVideoById(videoData["vid"], start, end);
     }
 
-    getPlayer().loadPlaylist(playlistVids, videoIndex);
-
-    currentPlaylistIndex = playlistIndex;
+    currentPlaylistIndex  = playlistIndex;
+    currentVideolistIndex = videolistIndex;
 }
 
 function onYouTubePlayerReady(playerId) {
@@ -312,14 +319,26 @@ function stopProgress() {
     progressTimer = undefined;
 }
 
+function stopUnstarted() {
+    clearTimeout(playerUnstartedTimer);
+    playerUnstartedTimer = undefined;
+}
+
+// Called when a video has not started after a given time
+function unstarted() {
+    stopUnstarted();
+    nextVideo();
+}
+
 function onYouTubePlayerEvent(event) {
     console.log("player event [" + event + "]");
 
     if (event == YT.PlayerState.PLAYING) {
-        var player = getPlayer();
-        var playlistIndex = player.getPlaylistIndex();
+        stopUnstarted();
 
-        var videoData = allPlaylists[currentPlaylistIndex][PLAYLIST_DATA_SONGS_INDEX][playlistIndex];
+        var player = getPlayer();
+
+        var videoData = getVideolist(currentPlaylistIndex)[currentVideolistIndex];
         $("#title").html(videoData["title"]);
         $("#artist").html(videoData["artist"]);
 
@@ -328,8 +347,7 @@ function onYouTubePlayerEvent(event) {
             $("#playlist li:nth-child(" + (currentPlaylistIndex + 1) + ")").addClass("playing");
             if ($("#playlist li:nth-child(" + (currentPlaylistIndex + 1) + ")").hasClass("selected")) {
                 $("#videolist li").removeClass("playing");
-                var currentVideoIndex = player.getPlaylistIndex();
-                $("#videolist li:nth-child(" + (currentVideoIndex + 1) + ")").addClass("playing");
+                $("#videolist li:nth-child(" + (currentVideolistIndex + 1) + ")").addClass("playing");
             }
         }
 
@@ -342,6 +360,10 @@ function onYouTubePlayerEvent(event) {
     } else if (event == YT.PlayerState.ENDED) { // end of a playlist
         stopProgress();
         nextVideo();
+    } else if (event == -1) {
+        stopUnstarted();
+        stopProgress();
+        playerUnstartedTimer = setTimeout('unstarted()', 7000);
     }
 
     manageControls(event);
