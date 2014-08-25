@@ -5,6 +5,8 @@ var playerReady = false;
 
 var replayVideo = false;
 
+var hideControlsTimeout;
+
 var playerUnstartedTimer;
 
 // Hide cursor after a period of inactivity
@@ -70,7 +72,7 @@ function getVideolist(playlistIndex) {
 }
 
 function showPlaylists() {
-    $("#controls-container").hide();
+    hideControls();
 
     $("#playlist").empty();
     for (var i = 0; i < allPlaylists.length; i++) {
@@ -113,12 +115,7 @@ function showVideolist(playlistIndex) {
 }
 
 function hidePlaylists() {
-    if ($("#playlists-container").is(':visible')) {
-        $("#playlists-container").hide(150, function() {
-                $("#controls-container").show();
-            }
-        );
-    }
+    $("#playlists-container").hide();
 }
 
 function previousVideo() {
@@ -187,6 +184,7 @@ function onYouTubePlayerReady(playerId) {
 
     if (!playerReady) {
         $(document).mousemove(showCursor);
+        $(document).mousemove(showControls);
 
         $("#player-overlay").click(playerClick);
 
@@ -227,6 +225,21 @@ function showCursor() {
     }
     hideCursorTimer = setTimeout('hideCursor()', 5000);
     showProgress();
+}
+
+function hideControls() {
+    $("#controls-container").hide();
+}
+
+function showControls(event) {
+    if ((!$("#playlists-container").is(':visible') && event.pageX < 20) || $("#controls-container").is(':hover')) {
+        // Show the controls if mouse is within 20 pixels from the left or we are hovering over it
+        clearTimeout(hideControlsTimeout);
+        hideControlsTimeout = null;
+        $("#controls-container").show();
+    } else if (!hideControlsTimeout) {
+        hideControlsTimeout = setTimeout(hideControls, 2000);
+    }
 }
 
 function pauseVideo() {
