@@ -181,6 +181,11 @@ function loadVideo(playlistIndex, videolistIndex) {
     history.replaceState(null, null, uri.toString());
 }
 
+function downloadVideo() {
+    var videoData = getVideolist(currentPlaylistIndex)[currentVideolistIndex];
+    window.open("http://ssyoutube.com/watch?v=" + videoData["vid"]);
+}
+
 function onYouTubePlayerReady(playerId) {
   	console.log("Player is ready! [" + playerId + "]");
 
@@ -204,6 +209,7 @@ function onYouTubePlayerReady(playerId) {
         $("#mute").click(mute);
         $("#unmute").click(unmute);
         $("#volume-slider").on("slide", volumeChange);
+        $("#download").click(downloadVideo);
 
         playerReady = true;
     }
@@ -414,6 +420,7 @@ function manageControls(event) {
         $("#beginning").show();
         $("#previous").show();
         $("#next").show();
+        $("#download").show();
 
         var player = getPlayer();
         if (player.isMuted()) {
@@ -435,6 +442,7 @@ function manageControls(event) {
         $("#beginning").show();
         $("#previous").show();
         $("#next").show();
+        $("#download").show();
 
         if (getPlayer().isMuted()) {
             $("#mute").hide();
@@ -453,6 +461,7 @@ function manageControls(event) {
         $("#mute").hide();
         $("#unmute").hide();
         $("#volume").hide();
+        $("#download").hide();
     }
 }
 
