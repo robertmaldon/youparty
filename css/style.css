@@ -24,7 +24,7 @@ body {
     width: 32px;
 }
 
-#pause, #play, #replay, #previous, #next, #mute, #unmute, #volume {
+#pause, #play, #replay, #beginning, #previous, #next, #mute, #unmute, #volume {
 	display: none;
 }
 

@@ -118,6 +118,10 @@ function hidePlaylists() {
     $("#playlists-container").hide();
 }
 
+function beginningVideo() {
+    loadVideo(currentPlaylistIndex, currentVideolistIndex);
+}
+
 function previousVideo() {
     var previousPlaylistIndex = currentPlaylistIndex;
     var previousVideolistIndex = currentVideolistIndex;
@@ -194,6 +198,7 @@ function onYouTubePlayerReady(playerId) {
         $("#pause").click(pauseVideo);
         $("#play").click(playVideo);
         $("#replay").click(toggleReplayVideo);
+        $("#beginning").click(beginningVideo);
         $("#previous").click(previousVideo);
         $("#next").click(nextVideo);
         $("#mute").click(mute);
@@ -406,8 +411,9 @@ function manageControls(event) {
         $("#play").hide();
         $("#pause").show();
         $("#replay").show();
-        $("#next").show();
+        $("#beginning").show();
         $("#previous").show();
+        $("#next").show();
 
         var player = getPlayer();
         if (player.isMuted()) {
@@ -426,8 +432,9 @@ function manageControls(event) {
         $("#play").show();
         $("#pause").hide();
         $("#replay").show();
-        $("#next").show();
+        $("#beginning").show();
         $("#previous").show();
+        $("#next").show();
 
         if (getPlayer().isMuted()) {
             $("#mute").hide();
@@ -440,8 +447,9 @@ function manageControls(event) {
         $("#play").hide();
         $("#pause").hide();
         $("#replay").hide();
-        $("#next").hide();
+        $("#beginning").hide();
         $("#previous").hide();
+        $("#next").hide();
         $("#mute").hide();
         $("#unmute").hide();
         $("#volume").hide();
