@@ -42,7 +42,7 @@ var playlistPartyNow = [ "Party Now!", [
     },
     {
       "title": "Get Lucky (2013)",
-      "artist": "Daft Punk",
+      "artist": "Daft Punk feat. Pharrell Williams",
       "vid": "h5EofwRzit0"
     },
   ]
@@ -58,6 +58,11 @@ var playlistPartyOldSchool = [ "Party Old School", [
       "title": "Push It (1987)",
       "artist": "Salt-N-Pepa",
       "vid": "vCadcBR95oU"
+    },
+    {
+      "title": "I've Been Thinking About You (1990)",
+      "artist": "Londonbeat",
+      "vid": "Bvrym1NXXjc"
     },
     {
       "title": "Step Back In Time (1990)",
@@ -189,9 +194,9 @@ var playlistOneHitWonders = [ "One Hit Wonders", [
       "vid": "OzQKECQgjW8"
     },
     {
-      "title": "Perfect (1988)",
-      "artist": "Fairground Attraction",
-      "vid": "txapREGWHp0"
+      "title": "Where My Heart Will Take Me (2001)",
+      "artist": "Russell Watson",
+      "vid": "pmQsrXLofMY"
     },
     {
       "title": "Pump Up The Jam (1989)",
@@ -229,6 +234,11 @@ var playlistOneHitWonders = [ "One Hit Wonders", [
       "vid": "O5t8as6pgj0"
     },
     {
+      "title": "She Drives Me Crazy (1988)",
+      "artist": "Fine Young Cannibals",
+      "vid": "9wSn81dLK6s"
+    },
+    {
       "title": "Steal My Sunshine (1999)",
       "artist": "Len",
       "vid": "E1fzJ_AYajA"
@@ -244,9 +254,19 @@ var playlistOneHitWonders = [ "One Hit Wonders", [
       "vid": "vTf_v3ZoHXk"
     },
     {
+      "title": "My Island Home (1995)",
+      "artist": "Christine Anu",
+      "vid": "EqKEEtJtCP4"
+    },
+    {
       "title": "I Ran (1982)",
       "artist": "A Flock Of Seagulls",
       "vid": "iIpfWORQWhU"
+    },
+    {
+      "title": "Believe It Or Not (1981)",
+      "artist": "Joey Scarbury",
+      "vid": "wcsMPyjwav8"
     },
     {
       "title": "Whip It (1980)",
@@ -383,7 +403,8 @@ var playlistOneHitWonders = [ "One Hit Wonders", [
     {
       "title": "Blame It On The Rain (1989)",
       "artist": "Milli Vanilli",
-      "vid": "rB0Le3oM1b8"
+      "vid": "rB0Le3oM1b8",
+      "start": 14
     },
     {
       "title": "Macarena (1993)",
@@ -507,6 +528,11 @@ var playlistSmooth = [ "Smooth", [
       "vid": "Lrle0x_DHBM"
     },
     {
+      "title": "Don't Dream It's Over (1986)",
+      "artist": "Crowded House",
+      "vid": "J9gKyRmic20"
+    },
+    {
       "title": "Feel (2002)",
       "artist": "Robbie Williams",
       "vid": "iy4mXZN1Zzk"
@@ -524,7 +550,8 @@ var playlistSmooth = [ "Smooth", [
     {
       "title": "Empire State of Mind, Part II (2010)",
       "artist": "Alicia Keys",
-      "vid": "iYmmh9zkpQM"
+      "vid": "iYmmh9zkpQM",
+      "start": 20
     },
     {
       "title": "All Of Me (2013)",
@@ -577,6 +604,11 @@ var playlistSmooth = [ "Smooth", [
       "vid": "IqAhRiH2nBQ"
     },
     {
+      "title": "Photograph (2014)",
+      "artist": "Ed Sheeran",
+      "vid": "SPKBtZHuzKY"
+    },
+    {
       "title": "Beautiful In My Eyes (1994)",
       "artist": "Joshua Kadison",
       "vid": "sRKqxSZeq4s"
@@ -614,6 +646,11 @@ var playlist10s = [ "10s", [
       "title": "Grenade (2010)",
       "artist": "Bruno Mars",
       "vid": "SR6iYWJxHqs"
+    },
+    {
+      "title": "Burn (2013)",
+      "artist": "Ellie Goulding",
+      "vid": "CGyEd0aKWZE"
     },
     {
       "title": "Call Me Maybe (2011)",
@@ -654,11 +691,23 @@ var playlist10s = [ "10s", [
       "title": "Payphone (2012)",
       "artist": "Maroon 5",
       "vid": "PNB59FdytuU"
+    },
+    {
+      "title": "Only Love Can Hurt Like This (2014)",
+      "artist": "Paloma Faith",
+      "vid": "PaKr9gWqwl4",
+      "start": 7
     },    
     {
       "title": "Last Friday Night (T.G.I.F.) (2011)",
       "artist": "Katy Perry",
       "vid": "KlyXNRrsk4A"
+    },
+    {
+      "title": "Happy (2013)",
+      "artist": "Pharrell Williams",
+      "vid": "y6Sxv-sUYtM",
+      "start": 8
     },
     {
       "title": "Let It Go (2013)",
@@ -755,6 +804,11 @@ var playlist00s = [ "00s", [
       "vid": "qi7Yh16dA0w"
     },
     {
+      "title": "Because Of You (2005)",
+      "artist": "Kelly Clarkson",
+      "vid": "Ra-Om7UMSJc"
+    },
+    {
       "title": "On A Night Like This (2000)",
       "artist": "Kylie Minogue",
       "vid": "zfER3jhUC2E"
@@ -798,6 +852,11 @@ var playlist00s = [ "00s", [
       "title": "Because Of You (2005)",
       "artist": "Kelly Clarkson",
       "vid": "Ra-Om7UMSJc"
+    },
+    {
+      "title": "Complicated (2002)",
+      "artist": "Avril Lavigne",
+      "vid": "5NPBIwQyPWE"
     },
     {
       "title": "Paparazzi (2009)",
@@ -849,9 +908,19 @@ var playlist90s = [ "90s", [
       "vid": "7g7n5rYm_FU"
     },
     {
+      "title": "Kiss from a Rose (1994)",
+      "artist": "Seal",
+      "vid": "ateQQc-AgEM"
+    },
+    {
       "title": "U Can't Touch This (1990)",
       "artist": "MC Hammer",
       "vid": "otCpCn0l4Wo"
+    },
+    {
+      "title": "Just Another Day (1992)",
+      "artist": "Jon Secada",
+      "vid": "TRTzMqT_rt4"
     },
     {
       "title": "Breathe (1999)",
@@ -877,6 +946,11 @@ var playlist90s = [ "90s", [
       "title": "Not A Day Goes By (1992)",
       "artist": "Rick Price",
       "vid": "24wtbzprD0c"
+    },
+    {
+      "title": "Faith Of The Heart (1999)",
+      "artist": "Rod Stewart",
+      "vid": "nanaT3u2Lzw"
     },
     {
       "title": "How Do I Live (1997)",
@@ -922,6 +996,11 @@ var playlist90s = [ "90s", [
       "title": "Doctor Jones (1997)",
       "artist": "Aqua",
       "vid": "-1jPUB7gRyg"
+    },
+    {
+      "title": "If You Go (1994)",
+      "artist": "Jon Secada",
+      "vid": "MggrZMe86i0"
     },
     {
       "title": "Show Me The Meaning Of Being Lonely (1998)",
@@ -984,6 +1063,11 @@ var playlist90s = [ "90s", [
       "vid": "Hat1Hc9SNwE"
     },
     {
+      "title": "Angel (1993)",
+      "artist": "Jon Secada",
+      "vid": "S6Tlq7mq-PU"
+    },
+    {
       "title": "Larger Than Life (1999)",
       "artist": "Backstreet Boys",
       "vid": "MEb2CecR11I"
@@ -1007,6 +1091,11 @@ var playlist90s = [ "90s", [
       "title": "Heal The World (1991)",
       "artist": "Michael Jackson",
       "vid": "BWf-eARnf6U"
+    },
+    {
+      "title": "I'm Free (1993)",
+      "artist": "Jon Secada",
+      "vid": "9xHLPadyiyM"
     },
     {
       "title": "Fantasy (1995)",
@@ -1082,6 +1171,11 @@ var playlist90s = [ "90s", [
       "title": "I Will Always Love You (1994)",
       "artist": "Whitney Houston",
       "vid": "3JWTaaS7LdU"
+    },
+    {
+      "title": "Crazy (1990)",
+      "artist": "Seal",
+      "vid": "1A-hqZf7xQs"
     },
     {
       "title": "My Heart Will Go On (1997)",
@@ -1256,6 +1350,11 @@ var playlist80s = [ "80s", [
       "title": "One Summer (1988)",
       "artist": "Daryl Braithwaite",
       "vid": "pVfA9r-AVOg"
+    },
+    {
+      "title": "Alone (1987)",
+      "artist": "Heart",
+      "vid": "1Cw1ng75KP0"
     },
     {
       "title": "Satisfied (1989)",
