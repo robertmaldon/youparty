@@ -50,6 +50,11 @@ var playlistPartyNow = [ "Party Now!", [
 
 var playlistPartyOldSchool = [ "Party Old School", [
     {
+      "title": "Missing (1994)",
+      "artist": "Everything But The Girl",
+      "vid": "9lcCKs3q5Fc"
+    },
+    {
       "title": "Flashdance - What A Feeling (1983)",
       "artist": "Irene Cara",
       "vid": "ILWSp0m9G2U"
@@ -57,6 +62,11 @@ var playlistPartyOldSchool = [ "Party Old School", [
     {
       "title": "Push It (1987)",
       "artist": "Salt-N-Pepa",
+      "vid": "vCadcBR95oU"
+    },
+    {
+      "title": "Another Night (1993)",
+      "artist": "Real McCoy",
       "vid": "vCadcBR95oU"
     },
     {
@@ -110,6 +120,11 @@ var playlistPartyOldSchool = [ "Party Old School", [
       "vid": "DfdkKYHlZp4"
     },
     {
+      "title": "One More Time (1997)",
+      "artist": "Real McCoy",
+      "vid": "1EbRikt1bJo"
+    },
+    {
       "title": "Set You Free (1994)",
       "artist": "N-Trance",
       "vid": "18W9WYw9HaA"
@@ -143,6 +158,11 @@ var playlistPartyOldSchool = [ "Party Old School", [
       "title": "Barbie Girl (1997)",
       "artist": "Aqua",
       "vid": "ZyhrYis509A"
+    },
+    {
+      "title": "Run Away (1994)",
+      "artist": "Real McCoy",
+      "vid": "scOmculb4WE"
     },
     {
       "title": "Waiting For Tonight (1999)",
@@ -189,6 +209,11 @@ var playlistOneHitWonders = [ "One Hit Wonders", [
       "vid": "csATriX8Ed0"
     },
     {
+      "title": "The Scatman (1983)",
+      "artist": "Scatman John",
+      "vid": "y6oXW_YiV6g"
+    },
+    {
       "title": "What About Me? (1982)",
       "artist": "Moving Pictures",
       "vid": "OzQKECQgjW8"
@@ -197,6 +222,11 @@ var playlistOneHitWonders = [ "One Hit Wonders", [
       "title": "Where My Heart Will Take Me (2001)",
       "artist": "Russell Watson",
       "vid": "pmQsrXLofMY"
+    },
+    {
+      "title": "I Want Your Love (1988)",
+      "artist": "Transvision Vamp",
+      "vid": "XpEmHajlCt4"
     },
     {
       "title": "Pump Up The Jam (1989)",
@@ -272,6 +302,11 @@ var playlistOneHitWonders = [ "One Hit Wonders", [
       "title": "Whip It (1980)",
       "artist": "Devo",
       "vid": "IIEVqFB4WUo"
+    },
+    {
+      "title": "Sexy (Is the Word) (1991)",
+      "artist": "Melissa",
+      "vid": "EWCiKbU0JB4"
     },
     {
       "title": "Slice Of Heaven (1987)",
@@ -364,11 +399,6 @@ var playlistOneHitWonders = [ "One Hit Wonders", [
       "vid": "tZQQGX24Teg"
     },
     {
-      "title": "The Scatman (1983)",
-      "artist": "Scatman John",
-      "vid": "y6oXW_YiV6g"
-    },
-    {
       "title": "Kung Fu Fighting (1974)",
       "artist": "Carl Douglas",
       "vid": "dc3aHYGhNVM",
@@ -446,6 +476,11 @@ var playlistSmooth = [ "Smooth", [
       "title": "Moonlight Shadow (1983)",
       "artist": "Mike Oldfield ft. Maggie Reilly",
       "vid": "e80qhyovOnA"
+    },
+    {
+      "title": "I Can Dream About You (1984)",
+      "artist": "Dan Hartman",
+      "vid": "2gefPJ3unLg"
     },
     {
       "title": "Love Is In The Air (1978)",
@@ -618,6 +653,11 @@ var playlistSmooth = [ "Smooth", [
 
 var playlist10s = [ "10s", [
     {
+      "title": "Que Sera (2014)",
+      "artist": "Justice Crew",
+      "vid": "9MDTCF1dp28"
+    },
+    {
       "title": "Battle Scars (2012)",
       "artist": "Guy Sebastian ft. Lupe Fiasco",
       "vid": "4ka1Lgd3SAI"
@@ -636,11 +676,6 @@ var playlist10s = [ "10s", [
       "title": "Blow Me (One Last Kiss) (2012)",
       "artist": "Pink",
       "vid": "5NQ1YViEgMs"
-    },
-    {
-      "title": "Inescapable (2011)",
-      "artist": "Jessica Mauboy",
-      "vid": "jD_BNVinrFA"
     },
     {
       "title": "Grenade (2010)",
@@ -722,6 +757,11 @@ var playlist00s = [ "00s", [
       "title": "Hero (2001)",
       "artist": "Enrique Iglesias",
       "vid": "koJlIGDImiU"
+    },
+    {
+      "title": "You're Beautiful (2005)",
+      "artist": "James Blunt",
+      "vid": "oofSnsGkops"
     },
     {
       "title": "Spinning Around (2000)",
@@ -849,6 +889,12 @@ var playlist00s = [ "00s", [
       "vid": "Eo-KmOd3i7s"
     },
     {
+      "title": "A Thousand Miles (2001)",
+      "artist": "Vanessa Carlton",
+      "vid": "Cwkej79U3ek",
+      "start": 20
+    },
+    {
       "title": "Because Of You (2005)",
       "artist": "Kelly Clarkson",
       "vid": "Ra-Om7UMSJc"
@@ -857,6 +903,11 @@ var playlist00s = [ "00s", [
       "title": "Complicated (2002)",
       "artist": "Avril Lavigne",
       "vid": "5NPBIwQyPWE"
+    },
+    {
+      "title": "I'm Like A Bird (2000)",
+      "artist": "Nelly Furtado",
+      "vid": "roPQ_M3yJTA"
     },
     {
       "title": "Paparazzi (2009)",
@@ -913,6 +964,11 @@ var playlist90s = [ "90s", [
       "vid": "ateQQc-AgEM"
     },
     {
+      "title": "Dreams (1993)",
+      "artist": "Gabrielle",
+      "vid": "G5QPirQITZI"
+    },
+    {
       "title": "U Can't Touch This (1990)",
       "artist": "MC Hammer",
       "vid": "otCpCn0l4Wo"
@@ -926,6 +982,16 @@ var playlist90s = [ "90s", [
       "title": "Breathe (1999)",
       "artist": "Faith Hill",
       "vid": "yCmsZUN4r_s"
+    },
+    {
+      "title": "Kiss Me (1998)",
+      "artist": "Sixpence None The Richer",
+      "vid": "8N-qO3sPMjc"
+    },
+    {
+      "title": "Automatic Lover (Call For Love) (1993)",
+      "artist": "Real McCoy",
+      "vid": "Kr20jAdM45c"
     },
     {
       "title": "I Knew I Loved You (1999)",
@@ -956,6 +1022,12 @@ var playlist90s = [ "90s", [
       "title": "How Do I Live (1997)",
       "artist": "Trisha Yearwood",
       "vid": "RFnD3uwKHag"
+    },
+    {
+      "title": "Crush (1998)",
+      "artist": "Jennifer Paige",
+      "vid": "EIhSnaqou0I",
+      "start": 8
     },
     {
       "title": "I'll Be There For You (1995)",
@@ -1205,6 +1277,11 @@ var playlist80s = [ "80s", [
       "title": "With Or Without You (1987)",
       "artist": "U2",
       "vid": "XmSdTa9kaiQ"
+    },
+    {
+      "title": "A Groovy Kind Of Love (1988)",
+      "artist": "Phil Collins",
+      "vid": "HsC_SARyPzk"
     },
     {
       "title": "Down Under (1981)",
