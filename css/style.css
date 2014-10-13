@@ -24,7 +24,7 @@ body {
     width: 32px;
 }
 
-#pause, #play, #replay, #beginning, #previous, #next, #mute, #unmute, #volume, #download {
+#pause, #play, #replay, #beginning, #previous, #next, #volume, #download {
 	display: none;
 }
 
@@ -50,7 +50,6 @@ body {
 }
 
 #progress-slider {
-	height: 10px;
 	width: 90%;
 	float: left;
 }
@@ -135,47 +134,21 @@ body {
 	border: 2px solid orange;
 }
 
-#volume {
-	width: 32px;
-	color: #444444;
+#volume-container {
+	display: none;
+    position: absolute;
+    top: 256px;
+    left: 32px;
+    width: 300px;
+    z-index: 100;
 }
 
 #volume-slider {
-	margin: 20px 10px 20px 10px;
-	padding: 0;
-	width: 10px;
-	height: 200px;
-	color: #444444;
-}
-
-.noUi-background {
-	background: #000;
-	box-shadow: inset 0 0 1px #999999;
-}
-
-.noUi-target {
-    border: none;
-}
-
-.noUi-vertical .noUi-handle {
-	width: 22px;
-}
-
-.noUi-handle {
-	border: none;
-	background: #444444;
-	box-shadow: inset 0 0 1px #444444,
-				inset 0 1px 7px #666666;
-}
-
-.noUi-handle::before, #volume-slider .noUi-handle::after {
-	content: none;
-}
-
-.noUi-connect {
-	background: #444444;
+	width: 80%;
+	float: left;
 }
 
 #volume-label {
-	margin: 0 0 0 5px;
+	height: 10px;
+	float: left;
 }

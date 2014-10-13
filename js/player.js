@@ -50,19 +50,6 @@ function initPlayer() {
     // You can use this ID to access the swf and call the player's API
     var atts = { id: "player" }; // 640 x 360
     swfobject.embedSWF(swfUrl, "player-placeholder", playerSize[WIDTH], playerSize[HEIGHT], "9", null, flashvars, params, atts);
-
-    // Init the volume slider
-    $("#volume-slider").noUiSlider({
-        start: 50,
-        step: 1,
-        orientation: "vertical",
-        direction: "rtl",
-        connect: "lower",
-        range: {
-          'min': [   0 ],
-          'max': [ 100 ]
-        }
-    });
 }
 
 function getVideolist(playlistIndex) {
@@ -205,9 +192,9 @@ function onYouTubePlayerReady(playerId) {
         $("#beginning").click(beginningVideo);
         $("#previous").click(previousVideo);
         $("#next").click(nextVideo);
-        $("#mute").click(mute);
-        $("#unmute").click(unmute);
-        $("#volume-slider").on("slide", volumeChange);
+        $("#volume").click(toggleVolume);
+        $("#volume-slider").on("input", volumeChange);
+        $("#volume-slider").on("change", volumeChange);
         $("#download").click(downloadVideo);
 
         playerReady = true;
@@ -241,6 +228,7 @@ function showCursor() {
 
 function hideControls() {
     $("#controls-container").hide();
+    $("#volume-container").hide();   
 }
 
 function showControls(event) {
@@ -267,24 +255,20 @@ function toggleReplayVideo() {
     }
 }
 
-function mute() {
-    getPlayer().mute();
-    $("#mute").hide();
-    $("#unmute").show();
-    $("#volume").hide();
-}
-
-function unmute() {
-    getPlayer().unMute();
-    $("#unmute").hide();
-    $("#mute").show();
-    $("#volume").show();
+function toggleVolume() {
+    $("#volume-container").toggle();
 }
 
 function volumeChange() {
     var volume = parseInt($("#volume-slider").val());
     getPlayer().setVolume(volume);
     $("#volume-label").html(volume + "%");
+
+    if (volume == 0) {
+        $("#volume").attr("src", "images/mute.png");
+    } else {
+        $("#volume").attr("src", "images/unmute.png");
+    }
 }
 
 function playerClick() {
@@ -337,17 +321,9 @@ function changeProgress() {
 }
 
 function startProgress() {
-    $("#progress-slider-container").append("<div id=\"progress-slider\"></div><span id=\"progress-time\"></span>");
-    $("#progress-slider").noUiSlider({
-            start: 0,
-            step: 1,
-            connect: "lower",
-            range: {
-              "min": [   0 ],
-              "max": [ player.getDuration() ]
-            }
-    });
-    $("#progress-slider").on("slide", changeProgress);
+    $("#progress-slider-container").append("<input id=\"progress-slider\" type=\"range\" min=\"0\" max=\"" + player.getDuration() + "\" step=\"1\" value=\"0\"><span id=\"progress-time\"></span>");
+    $("#progress-slider").on("input", changeProgress);
+    $("#progress-slider").on("change", changeProgress);
     progressTimer = setInterval(updateProgress, 1000);
 }
 
@@ -419,20 +395,7 @@ function manageControls(event) {
         $("#previous").show();
         $("#next").show();
         $("#download").show();
-
-        var player = getPlayer();
-        if (player.isMuted()) {
-            $("#mute").hide();
-            $("#unmute").show();
-            $("#volume").hide();
-        } else {
-            $("#mute").show();
-            $("#unmute").hide();
-            var volume = player.getVolume();
-            $("#volume-slider").val(volume);
-            $("#volume-label").html(volume + "%");
-            $("#volume").show();
-        }
+        $("#volume").show();
     } else if (event == YT.PlayerState.PAUSED) {
         $("#play").show();
         $("#pause").hide();
@@ -441,14 +404,7 @@ function manageControls(event) {
         $("#previous").show();
         $("#next").show();
         $("#download").show();
-
-        if (getPlayer().isMuted()) {
-            $("#mute").hide();
-            $("#unmute").show();
-        } else {
-            $("#mute").show();
-            $("#unmute").hide();
-        }
+        $("#volume").show();
     } else {
         $("#play").hide();
         $("#pause").hide();
@@ -456,10 +412,8 @@ function manageControls(event) {
         $("#beginning").hide();
         $("#previous").hide();
         $("#next").hide();
-        $("#mute").hide();
-        $("#unmute").hide();
-        $("#volume").hide();
         $("#download").hide();
+        $("#volume").hide();
     }
 }
 

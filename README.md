@@ -12,9 +12,9 @@ youparty is minimalist video player written in html/css/javascript. It uses the 
 
 The YouTube javascript api loads and manipulates a flash-based video player. The flash security model requires that flash player and the html/javascript that loads a flash player be served from an http server. Therefore you need to install the html/css/js/images on an http server.
 
-If you want to test locally before deploying to a remote server, and you are developing on a Mac or Linux, then you can use Python's in-built SimpleHTTPServer like so:
+If you want to test locally before deploying to a remote server, and you are developing on a Mac or Linux, then you can use the script dev/server.sh, which is a wrapper around Python's in-built SimpleHTTPServer (the "wrapper" sets HTTP cache headers to expire assets immediately):
 
-    python -m SimpleHTTPServer
+    dev/server.sh
 
 then simply point your browser at [http://localhost:8000/](http://localhost:8000/)
 
@@ -60,7 +60,6 @@ where:
 
 As usual I stand on the shoulders of giants. youparty makes use of the following libraries:
 
-* [noUiSlider](https://github.com/leongersen/noUiSlider/) - a lightweight jQuery range slider plugin
 * [jsUri](https://github.com/derek-watson/jsUri) - Uri parsing and manipulation
 
 ## Similar projects
