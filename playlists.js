@@ -67,12 +67,12 @@ var playlistPartyOldSchool = [ "Party Old School", [
     {
       "title": "Another Night (1993)",
       "artist": "Real McCoy",
-      "vid": "vCadcBR95oU"
+      "vid": "Pav2f4b-1ZE"
     },
     {
       "title": "I've Been Thinking About You (1990)",
       "artist": "Londonbeat",
-      "vid": "Bvrym1NXXjc"
+      "vid": "dGw3w_njQ4g"
     },
     {
       "title": "Step Back In Time (1990)",
@@ -893,11 +893,6 @@ var playlist00s = [ "00s", [
       "artist": "Vanessa Carlton",
       "vid": "Cwkej79U3ek",
       "start": 20
-    },
-    {
-      "title": "Because Of You (2005)",
-      "artist": "Kelly Clarkson",
-      "vid": "Ra-Om7UMSJc"
     },
     {
       "title": "Complicated (2002)",
