@@ -5,8 +5,6 @@ var playerReady = false;
 
 var replayVideo = false;
 
-var hideControlsTimeout;
-
 var playerUnstartedTimer;
 
 // Hide cursor after a period of inactivity
@@ -73,6 +71,7 @@ function getVideolist(playlistIndex) {
 
 function showPlaylists() {
     hideControls();
+    hideProgress();
 
     $("#playlist").empty();
     for (var i = 0; i < allPlaylists.length; i++) {
@@ -225,6 +224,7 @@ function hideCursor() {
     $("html").css({cursor: "url(images/transparent.png), default"});
     cursorHidden = true;
     hideCursorTimer = null;
+    hideControls();
     hideProgress();
 }
 
@@ -235,6 +235,7 @@ function showCursor() {
         cursorHidden = false;
     }
     hideCursorTimer = setTimeout('hideCursor()', 5000);
+    showControls();
     showProgress();
 }
 
@@ -243,13 +244,8 @@ function hideControls() {
 }
 
 function showControls(event) {
-    if ((!$("#playlists-container").is(':visible') && event.pageX < 20) || $("#controls-container").is(':hover')) {
-        // Show the controls if mouse is within 20 pixels from the left or we are hovering over it
-        clearTimeout(hideControlsTimeout);
-        hideControlsTimeout = null;
+    if (!$("#playlists-container").is(':visible')) {
         $("#controls-container").show();
-    } else if (!hideControlsTimeout) {
-        hideControlsTimeout = setTimeout(hideControls, 2000);
     }
 }
 
@@ -300,7 +296,9 @@ function playerClick() {
 }
 
 function showProgress() {
-    $("#progress-slider-container").show();
+    if (!$("#playlists-container").is(':visible')) {
+        $("#progress-slider-container").show();
+    }
 }
 
 function hideProgress() {
