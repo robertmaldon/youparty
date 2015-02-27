@@ -4,7 +4,7 @@ A web-based minimalist, distraction-free YouTube video player
 
 ## Description
 
-[Demo](http://robertmaldon.github.io/demo/youparty/)
+[Demo](http://rawgit.com/robertmaldon/youparty/master/index.html)
 
 youparty is minimalist video player written in html/css/javascript. It uses the [YouTube javascript api](https://developers.google.com/youtube/js_api_reference) to load and play videos from YouTube. Videos are selected from curated play lists.
 
